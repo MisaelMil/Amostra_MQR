@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostruário Virtual M.Q.R. 2</title>
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: Arial, sans-serif;
+      user-select: none;
+    }
+
+    /* =================================================== */
+    /* LAYOUT PARA COMPUTADOR (DESKTOP)                    */
+    /* =================================================== */
+
+    .titulo {
+      position: absolute;
+      top: 15px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 32px;
+      z-index: 10;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    .ui-nome {
+      position: absolute;
+      top: 70px;
+      width: 100%;
+      text-align: center;
+      color: #ffdd67;
+      font-size: 26px;
+      font-weight: bold;
+      z-index: 10;
+      text-shadow: 2px 2px 6px black;
+    }
+
+    .ui-painel-descricao {
+      position: absolute;
+      right: 30px;
+      top: 35%;
+      width: 260px;
+      background: rgba(0, 0, 0, 0.75);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      font-size: 16px;
+      line-height: 1.5;
+      z-index: 10;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
+      box-sizing: border-box;
+    }
+
+    .info {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      z-index: 10;
+      text-shadow: 2px 2px 8px black;
+    }
+
+    /* =================================================== */
+    /* LAYOUT RESPONSIVO PARA CELULAR (MODO RETRATO)       */
+    /* =================================================== */
+    @media (max-width: 768px) {
+      .titulo {
+        font-size: 20px;
+        top: 12px;
+      }
+
+      .ui-nome {
+        font-size: 18px;
+        top: 45px;
+      }
+
+      /* Move o painel para baixo do objeto, virando uma barra inferior */
+      .ui-painel-descricao {
+        right: 15px;
+        left: 15px;
+        top: auto;
+        bottom: 50px; /* Posicionado logo acima do texto de instrução */
+        width: auto;
+        padding: 12px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.4;
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .info {
+        font-size: 13px;
+        bottom: 15px;
+        color: #aaa;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- INTERFACE HTML (Acentuação perfeita e responsiva) -->
+<div class="titulo">Mostruário Virtual M.Q.R</div>
+<div id="htmlNomeObjeto" class="ui-nome">Estátua</div>
+
+<div id="htmlDescricaoObjeto" class="ui-painel-descricao">
+  Estátua mulher com vaso<br>Bragança - PA
+</div>
+
+<div class="info">Toque na tela para trocar o objeto</div>
+
+<!-- MUNDO 3D -->
+<a-scene background="color: #0d0d0d">
+
+  <!-- LUZES -->
+  <a-light type="ambient" intensity="0.7"></a-light>
+  <a-light type="directional" position="2 5 3" intensity="2"></a-light>
+  <a-light type="point" position="0 3 2" intensity="1.5"></a-light>
+
+  <!-- CHÃO -->
+  <a-plane rotation="-90 0 0" width="20" height="20" color="#222"></a-plane>
+
+  <!-- PEDESTAL -->
+  <a-cylinder position="0 0.6 -3" radius="1.3" height="0.8" color="#555"></a-cylinder>
+
+  <!-- VITRINE -->
+  <a-box position="0 2.55 -3.95" width="3" height="4.7" depth="0.03" opacity="0.15" color="#99ccff"></a-box>
+  <a-box position="0 2.55 -2.05" width="3" height="4.7" depth="0.03" opacity="0.08" color="#99ccff"></a-box>
+  <a-box position="-1.5 2.55 -3" width="0.03" height="4.7" depth="2" opacity="0.12" color="#99ccff"></a-box>
+  <a-box position="1.5 2.55 -3" width="0.03" height="4.7" depth="2" opacity="0.12" color="#99ccff"></a-box>
+  <a-box position="0 4.95 -3" width="3.1" height="0.12" depth="2.1" color="#444"></a-box>
+  <a-box position="0 0.15 -3" width="3.1" height="0.3" depth="2.1" color="#444"></a-box>
+
+  <!-- OBJETOS GLTF -->
+  <a-entity id="obj1" gltf-model="etatua.glb" position="0 0.9 -3" scale="1.4 1.4 1.4" visible="true" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj6" gltf-model="vaso1.glb" position="0 1 -3" scale="5 5 5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj2" gltf-model="vaso2.glb" position="0 1 -3" scale="5 5 5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj3" gltf-model="vaso3.glb" position="0 1 -3" scale="5 5 5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj4" gltf-model="sofa.glb" position="0 0.7 -3" scale="1.3 1.3 1.3" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj5" gltf-model="flor.glb" position="0 1 -3" scale="1.5 1.5 1.5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj7" gltf-model="cavalo.glb" position="0 0.9 -3" scale="1.2 1.2 1.2" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+  <a-entity id="obj8" gltf-model="cadeira.glb" position="0 0.8 -3" scale="1.5 1.5 1.5" visible="false" animation="property: rotation; to: 0 360 0; loop: true; dur: 12000; easing: linear"></a-entity>
+
+  <!-- CÂMERA -->
+  <a-entity position="0 1.8 1.5">
+    <a-camera look-controls="magicWindowTrackingEnabled: false">
+      <a-cursor color="white"></a-cursor>
+    </a-camera>
+  </a-entity>
+
+</a-scene>
+
+<!-- JAVASCRIPT -->
+<script>
+const objetos = [
+  { id: "obj1", nome: "Estátua", descricao: "Estátua mulher com vaso<br>Bragança - PA" },
+  { id: "obj6", nome: "Vaso 1", descricao: "Vaso cerâmico Marajoara<br>Bragança - PA" },
+  { id: "obj2", nome: "Vaso 2", descricao: "Peça cerimonial indígena<br>Abaetetuba - PA" },
+  { id: "obj3", nome: "Vaso 3", descricao: "Arte cerâmica tradicional<br>Soure - PA" },
+  { id: "obj4", nome: "Sofá", descricao: "Miniatura de mobiliário<br>Belém - PA" },
+  { id: "obj5", nome: "Flor", descricao: "Escultura botânica digital<br>Castanhal - PA" },
+  { id: "obj7", nome: "Cavalo", descricao: "Escultura animal artesanal<br>Marajó - PA" },
+  { id: "obj8", nome: "Cadeira", descricao: "Objeto doméstico modelado<br>Belém - PA" }
+];
+
+let atual = 0;
+
+function mostrarObjeto(index) {
+  objetos.forEach(obj => {
+    document.getElementById(obj.id).setAttribute("visible", false);
+  });
+  
+  document.getElementById(objetos[index].id).setAttribute("visible", true);
+  document.getElementById("htmlNomeObjeto").innerText = objetos[index].nome;
+  document.getElementById("htmlDescricaoObjeto").innerHTML = objetos[index].descricao;
+}
+
+// O evento 'click' nativo do JS funciona perfeitamente para 'taps' no celular
+document.addEventListener("click", () => {
+  atual++;
+  if (atual >= objetos.length) { atual = 0; }
+  mostrarObjeto(atual);
+});
+</script>
+
+<!-- MathMathMath - 2026-05-22 -->
+
+</body>
+</html>
